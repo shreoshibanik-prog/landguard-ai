@@ -64,4 +64,7 @@ class Handler(SimpleHTTPRequestHandler):
   return json_out(self,{'error':'Not found'},404)
 
 if __name__=='__main__':
- init(); print('LandGuard AI running at http://localhost:8000'); ThreadingHTTPServer(('0.0.0.0',8000),Handler).serve_forever()
+    init()
+    port = int(os.environ.get("PORT", 8000))
+    print(f"LandGuard AI running on port {port}")
+    ThreadingHTTPServer(("0.0.0.0", port), Handler).serve_forever()
